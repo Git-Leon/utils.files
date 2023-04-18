@@ -10,7 +10,7 @@ import java.util.Scanner;
 public interface DocumentInterface {
 
 
-    default void append(String contentToBeWritten) {
+    default DocumentInterface append(String contentToBeWritten) {
         try {
             final FileWriter fileWriter = getFileWriter(true);
             fileWriter.write(contentToBeWritten);
@@ -19,6 +19,7 @@ public interface DocumentInterface {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+        return this;
     }
 
 

@@ -20,15 +20,18 @@ public class DocumentAppendTest {
     }
 
 
-
     @Test
     public void test1() throws IOException {
         // given
-        String expected = "The quick brown fox";
+        String expected1 = "The quick brown fox";
+        String expected2 = "The quicker brown fox";
+        String expected = expected1 + expected2;
         Document documentWriter = new Document(fileName);
 
         // when
-        documentWriter.append(expected);
+        documentWriter
+                .append(expected1)
+                .append(expected2);
         String actual = documentWriter.read();
 
         // then
