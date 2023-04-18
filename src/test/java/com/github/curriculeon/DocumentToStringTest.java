@@ -1,6 +1,5 @@
 package com.github.curriculeon;
 
-import com.github.curriculeon.Document;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +32,7 @@ public class DocumentToStringTest {
                 .toString();
 
         // when
-        documentWriter.write(contentToBeWritten);
+        documentWriter.append(contentToBeWritten);
         String actual = documentWriter.toString();
 
         // then
@@ -52,7 +51,7 @@ public class DocumentToStringTest {
                 .toString();
 
         // when
-        documentWriter.write(contentToBeWritten);
+        documentWriter.append(contentToBeWritten);
         String actual = documentWriter.toString();
 
         // then

@@ -1,6 +1,5 @@
 package com.github.curriculeon;
 
-import com.github.curriculeon.Document;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +25,7 @@ public class DocumentReadLineTest {
         String expected = "The";
         Document documentWriter = new Document(fileName);
         String contentToBeWritten = "The\nquick\nbrown\nfox";
-        documentWriter.write(contentToBeWritten);
+        documentWriter.append(contentToBeWritten);
 
         // when
         String actual = documentWriter.read(0);
@@ -42,7 +41,7 @@ public class DocumentReadLineTest {
         String expected = "quick";
         Document documentWriter = new Document(fileName);
         String contentToBeWritten = "The\nquick\nbrown\nfox";
-        documentWriter.write(contentToBeWritten);
+        documentWriter.append(contentToBeWritten);
 
         // when
         String actual = documentWriter.read(1);

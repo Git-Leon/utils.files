@@ -1,6 +1,5 @@
 package com.github.curriculeon;
 
-import com.github.curriculeon.Document;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,10 +25,10 @@ public class DocumentOverwriteTest {
         String contentToBeOverwritten = "The quick brown fox";
         String expected = "The quick browner fox";
         Document documentWriter = new Document(fileName);
-        documentWriter.write(contentToBeOverwritten);
+        documentWriter.append(contentToBeOverwritten);
 
         // when
-        documentWriter.overWrite(expected);
+        documentWriter.replaceAll(expected);
         String actual = documentWriter.read();
 
         // then
@@ -42,10 +41,10 @@ public class DocumentOverwriteTest {
         String contentToBeOverwritten = "The quick brown fox";
         String expected = "The quick brownest fox";
         Document documentWriter = new Document(fileName);
-        documentWriter.write(contentToBeOverwritten);
+        documentWriter.append(contentToBeOverwritten);
 
         // when
-        documentWriter.overWrite(expected);
+        documentWriter.replaceAll(expected);
         String actual = documentWriter.read();
 
         // then

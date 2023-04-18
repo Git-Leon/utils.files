@@ -1,6 +1,5 @@
 package com.github.curriculeon;
 
-import com.github.curriculeon.Document;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,10 +28,10 @@ public class DocumentWriteToLineTest {
         String expected = contentToBeWritten.replaceAll("quick", replacement);
 
         Document documentWriter = new Document(fileName);
-        documentWriter.write(contentToBeWritten);
+        documentWriter.append(contentToBeWritten);
 
         // when
-        documentWriter.write(1, replacement);
+        documentWriter.replaceLine(1, replacement);
 
         // then
         Assert.assertEquals(expected, documentWriter.read());
@@ -46,10 +45,10 @@ public class DocumentWriteToLineTest {
         String expected = contentToBeWritten.replaceAll("The", replacement);
 
         Document documentWriter = new Document(fileName);
-        documentWriter.write(contentToBeWritten);
+        documentWriter.append(contentToBeWritten);
 
         // when
-        documentWriter.write(0, replacement);
+        documentWriter.replaceLine(0, replacement);
 
         // then
         Assert.assertEquals(expected, documentWriter.read());

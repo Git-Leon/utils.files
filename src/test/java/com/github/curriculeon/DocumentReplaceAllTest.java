@@ -1,6 +1,5 @@
 package com.github.curriculeon;
 
-import com.github.curriculeon.Document;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class DocumentReplaceAllTest {
         String valueToReplace = "e";
         String replacementValue = "_";
         String expected = contentToBeWritten.replaceAll(valueToReplace, replacementValue);
-        documentWriter.write(contentToBeWritten);
+        documentWriter.append(contentToBeWritten);
 
         // when
         documentWriter.replaceAll(valueToReplace, replacementValue);
@@ -47,7 +46,7 @@ public class DocumentReplaceAllTest {
         String valueToReplace = "\n";
         String replacementValue = "";
         String expected = contentToBeWritten.replaceAll(valueToReplace, replacementValue);
-        documentWriter.write(contentToBeWritten);
+        documentWriter.append(contentToBeWritten);
 
         // when
         documentWriter.replaceAll(valueToReplace, replacementValue);

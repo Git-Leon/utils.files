@@ -10,7 +10,7 @@ import java.util.Scanner;
 public interface DocumentInterface {
 
 
-    default void write(String contentToBeWritten) {
+    default void append(String contentToBeWritten) {
         try {
             final FileWriter fileWriter = getFileWriter();
             fileWriter.write(contentToBeWritten);
@@ -22,7 +22,7 @@ public interface DocumentInterface {
     }
 
 
-    default void write(Integer lineNumber, String valueToBeWritten) {
+    default void replaceLine(Integer lineNumber, String valueToBeWritten) {
         final StringBuilder result = new StringBuilder();
         final List<String> lines = toList();
         lines.set(lineNumber, valueToBeWritten);
@@ -30,14 +30,24 @@ public interface DocumentInterface {
             result.append(line);
             result.append("\n");
         }
-        write(result.toString().replaceAll("$\n", ""));
+        append(result.toString().replaceAll("$\n", ""));
     }
 
+
+    default void replaceAll(String content) {
+        try {
+            final FileWriter overWriter = new FileWriter(getFile(), false);
+            overWriter.write(content);
+            overWriter.flush();
+            overWriter.close();
+        } catch (IOException e) {
+            throw new Error(e);
+        }
+    }
 
     default String read(Integer lineNumber) {
         return toList().get(lineNumber);
     }
-
 
     default String read() {
         final StringBuilder contents = new StringBuilder();
@@ -56,19 +66,7 @@ public interface DocumentInterface {
 
 
     default void replaceAll(String stringToReplace, String replacementString) {
-        overWrite(read().replaceAll(stringToReplace, replacementString));
-    }
-
-
-    default void overWrite(String content) {
-        try {
-            final FileWriter overWriter = new FileWriter(getFile(), false);
-            overWriter.write(content);
-            overWriter.flush();
-            overWriter.close();
-        } catch (IOException e) {
-            throw new Error(e);
-        }
+        replaceAll(read().replaceAll(stringToReplace, replacementString));
     }
 
 
