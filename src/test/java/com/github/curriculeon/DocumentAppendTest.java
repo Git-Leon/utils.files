@@ -16,13 +16,13 @@ public class DocumentAppendTest {
     @Before
     public void setup() {
         this.fileName = "target/file.txt";
-        new File(fileName).delete();
+        new Document(fileName).replaceAll("");
     }
 
 
 
     @Test
-    public void writeAlphaValuesTest() throws IOException {
+    public void test1() throws IOException {
         // given
         String expected = "The quick brown fox";
         Document documentWriter = new Document(fileName);
@@ -36,7 +36,7 @@ public class DocumentAppendTest {
     }
 
     @Test
-    public void writeSpecialCharactersTest() throws IOException {
+    public void test2() throws IOException {
         // given
         String expected = "()";
         Document documentWriter = new Document(fileName);
@@ -50,7 +50,49 @@ public class DocumentAppendTest {
     }
 
     @Test
-    public void writeNumericValuesTest() throws IOException {
+    public void test3() throws IOException {
+        // given
+        String expected = "123";
+        Document documentWriter = new Document(fileName);
+
+        // when
+        documentWriter.replaceAll(expected);
+        String actual = documentWriter.read();
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test4() throws IOException {
+        // given
+        String expected = "123";
+        Document documentWriter = new Document(fileName);
+
+        // when
+        documentWriter.replaceAll(expected);
+        String actual = documentWriter.read();
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test5() throws IOException {
+        // given
+        String expected = "123";
+        Document documentWriter = new Document(fileName);
+
+        // when
+        documentWriter.replaceAll(expected);
+        String actual = documentWriter.read();
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test6() throws IOException {
         // given
         String expected = "123";
         Document documentWriter = new Document(fileName);
