@@ -24,7 +24,7 @@ public class DocumentReadTest {
         // given
         Document documentWriter = new Document(fileName);
         String expected = "The\nquick\nbrown\nfox";
-        documentWriter.append(expected);
+        documentWriter.replaceAll(expected);
 
         // when
         String actual = documentWriter.read();
@@ -38,7 +38,7 @@ public class DocumentReadTest {
         // given
         Document documentWriter = new Document(fileName);
         String expected = "The\nquicker\nbrown\nfox";
-        documentWriter.append(expected);
+        documentWriter.replaceAll(expected);
 
         // when
         String actual = documentWriter.read();

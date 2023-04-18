@@ -25,7 +25,7 @@ public class DocumentReplaceAllTest {
         String contentToBeOverwritten = "The quick brown fox";
         String expected = "The quick browner fox";
         Document documentWriter = new Document(fileName);
-        documentWriter.append(contentToBeOverwritten);
+        documentWriter.replaceAll(contentToBeOverwritten);
 
         // when
         documentWriter.replaceAll(expected);
@@ -41,7 +41,7 @@ public class DocumentReplaceAllTest {
         String contentToBeOverwritten = "The quick brown fox";
         String expected = "The quick brownest fox";
         Document documentWriter = new Document(fileName);
-        documentWriter.append(contentToBeOverwritten);
+        documentWriter.replaceAll(contentToBeOverwritten);
 
         // when
         documentWriter.replaceAll(expected);

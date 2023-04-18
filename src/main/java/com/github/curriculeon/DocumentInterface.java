@@ -12,7 +12,7 @@ public interface DocumentInterface {
 
     default void append(String contentToBeWritten) {
         try {
-            final FileWriter fileWriter = getFileWriter(false);
+            final FileWriter fileWriter = getFileWriter(true);
             fileWriter.write(contentToBeWritten);
             fileWriter.flush();
             fileWriter.close();

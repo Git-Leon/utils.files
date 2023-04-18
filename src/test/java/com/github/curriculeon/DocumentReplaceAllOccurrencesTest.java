@@ -28,7 +28,7 @@ public class DocumentReplaceAllOccurrencesTest {
         String valueToReplace = "e";
         String replacementValue = "_";
         String expected = contentToBeWritten.replaceAll(valueToReplace, replacementValue);
-        documentWriter.append(contentToBeWritten);
+        documentWriter.replaceAll(contentToBeWritten);
 
         // when
         documentWriter.replaceAllOccurrences(valueToReplace, replacementValue);
@@ -46,7 +46,7 @@ public class DocumentReplaceAllOccurrencesTest {
         String valueToReplace = "\n";
         String replacementValue = "";
         String expected = contentToBeWritten.replaceAll(valueToReplace, replacementValue);
-        documentWriter.append(contentToBeWritten);
+        documentWriter.replaceAll(contentToBeWritten);
 
         // when
         documentWriter.replaceAllOccurrences(valueToReplace, replacementValue);

@@ -32,7 +32,7 @@ public class DocumentToStringTest {
                 .toString();
 
         // when
-        documentWriter.append(contentToBeWritten);
+        documentWriter.replaceAll(contentToBeWritten);
         String actual = documentWriter.toString();
 
         // then
@@ -51,7 +51,7 @@ public class DocumentToStringTest {
                 .toString();
 
         // when
-        documentWriter.append(contentToBeWritten);
+        documentWriter.replaceAll(contentToBeWritten);
         String actual = documentWriter.toString();
 
         // then

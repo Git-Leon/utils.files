@@ -28,7 +28,7 @@ public class DocumentReplaceLineTest {
         String expected = contentToBeWritten.replaceAll("quick", replacement);
 
         Document documentWriter = new Document(fileName);
-        documentWriter.append(contentToBeWritten);
+        documentWriter.replaceAll(contentToBeWritten);
 
         // when
         documentWriter.replaceLine(1, replacement);
@@ -45,7 +45,7 @@ public class DocumentReplaceLineTest {
         String expected = contentToBeWritten.replaceAll("The", replacement);
 
         Document documentWriter = new Document(fileName);
-        documentWriter.append(contentToBeWritten);
+        documentWriter.replaceAll(contentToBeWritten);
 
         // when
         documentWriter.replaceLine(0, replacement);

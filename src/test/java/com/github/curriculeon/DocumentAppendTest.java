@@ -56,7 +56,7 @@ public class DocumentAppendTest {
         Document documentWriter = new Document(fileName);
 
         // when
-        documentWriter.append(expected);
+        documentWriter.replaceAll(expected);
         String actual = documentWriter.read();
 
         // then
