@@ -27,7 +27,7 @@ public interface DocumentInterface {
         final List<String> lines = toList();
         lines.set(lineNumber, valueToBeWritten);
         lines.forEach(line -> result.append(line).append("\n"));
-        append(result.toString().replaceAll("$\n", ""));
+        replaceAll(result.toString().replaceAll("$\n", ""));
     }
 
     default void replaceAll(String content) {
