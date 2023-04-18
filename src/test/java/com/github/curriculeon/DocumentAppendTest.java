@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * @author leon on 16/11/2018.
  */
-public class DocumentOverwriteTest {
+public class DocumentAppendTest {
     private String fileName;
 
     @Before
@@ -19,16 +19,16 @@ public class DocumentOverwriteTest {
         new File(fileName).delete();
     }
 
+
+
     @Test
-    public void writeTest1() throws IOException {
+    public void writeAlphaValuesTest() throws IOException {
         // given
-        String contentToBeOverwritten = "The quick brown fox";
-        String expected = "The quick browner fox";
+        String expected = "The quick brown fox";
         Document documentWriter = new Document(fileName);
-        documentWriter.append(contentToBeOverwritten);
 
         // when
-        documentWriter.replaceAll(expected);
+        documentWriter.append(expected);
         String actual = documentWriter.read();
 
         // then
@@ -36,15 +36,27 @@ public class DocumentOverwriteTest {
     }
 
     @Test
-    public void writeTest2() throws IOException {
+    public void writeSpecialCharactersTest() throws IOException {
         // given
-        String contentToBeOverwritten = "The quick brown fox";
-        String expected = "The quick brownest fox";
+        String expected = "()";
         Document documentWriter = new Document(fileName);
-        documentWriter.append(contentToBeOverwritten);
 
         // when
-        documentWriter.replaceAll(expected);
+        documentWriter.append(expected);
+        String actual = documentWriter.read();
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void writeNumericValuesTest() throws IOException {
+        // given
+        String expected = "123";
+        Document documentWriter = new Document(fileName);
+
+        // when
+        documentWriter.append(expected);
         String actual = documentWriter.read();
 
         // then

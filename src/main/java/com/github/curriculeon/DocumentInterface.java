@@ -45,6 +45,10 @@ public interface DocumentInterface {
         }
     }
 
+    default void replaceAllOccurrences(String stringToReplace, String replacementString) {
+        replaceAll(read().replaceAll(stringToReplace, replacementString));
+    }
+
     default String read(Integer lineNumber) {
         return toList().get(lineNumber);
     }
@@ -64,10 +68,6 @@ public interface DocumentInterface {
         return contents.toString().replaceAll("$\n", "");
     }
 
-
-    default void replaceAll(String stringToReplace, String replacementString) {
-        replaceAll(read().replaceAll(stringToReplace, replacementString));
-    }
 
 
     default List<String> toList() {

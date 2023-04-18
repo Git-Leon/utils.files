@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * @author leon on 16/11/2018.
  */
-public class DocumentWriteToLineTest {
+public class DocumentReplaceLineTest {
     private String fileName;
 
     @Before

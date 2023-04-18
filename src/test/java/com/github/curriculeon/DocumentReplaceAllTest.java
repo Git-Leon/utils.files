@@ -19,40 +19,35 @@ public class DocumentReplaceAllTest {
         new File(fileName).delete();
     }
 
-
     @Test
-    public void testReplace_e_withUnderscore() throws IOException {
+    public void writeTest1() throws IOException {
         // given
+        String contentToBeOverwritten = "The quick brown fox";
+        String expected = "The quick browner fox";
         Document documentWriter = new Document(fileName);
-        String contentToBeWritten = "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor incididunt\nut labore et dolore\nmagna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris\nnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\nvelit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\nnon proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
-        String valueToReplace = "e";
-        String replacementValue = "_";
-        String expected = contentToBeWritten.replaceAll(valueToReplace, replacementValue);
-        documentWriter.append(contentToBeWritten);
+        documentWriter.append(contentToBeOverwritten);
 
         // when
-        documentWriter.replaceAll(valueToReplace, replacementValue);
+        documentWriter.replaceAll(expected);
+        String actual = documentWriter.read();
 
         // then
-        String actual = documentWriter.read();
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void testReplace_newLine_withEmptyString() throws IOException {
+    public void writeTest2() throws IOException {
         // given
+        String contentToBeOverwritten = "The quick brown fox";
+        String expected = "The quick brownest fox";
         Document documentWriter = new Document(fileName);
-        String contentToBeWritten = "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor incididunt\nut labore et dolore\nmagna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris\nnisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate\nvelit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat\nnon proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
-        String valueToReplace = "\n";
-        String replacementValue = "";
-        String expected = contentToBeWritten.replaceAll(valueToReplace, replacementValue);
-        documentWriter.append(contentToBeWritten);
+        documentWriter.append(contentToBeOverwritten);
 
         // when
-        documentWriter.replaceAll(valueToReplace, replacementValue);
+        documentWriter.replaceAll(expected);
+        String actual = documentWriter.read();
 
         // then
-        String actual = documentWriter.read();
         Assert.assertEquals(expected, actual);
     }
 }
