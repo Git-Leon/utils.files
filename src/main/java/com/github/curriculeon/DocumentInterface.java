@@ -33,7 +33,7 @@ public interface DocumentInterface {
 
     default void replaceLine(Integer lineNumber, String valueToBeWritten) {
         final StringBuilder result = new StringBuilder();
-        final List<String> lines = toList();
+        final List<String> lines = toLines();
         lines.set(lineNumber, valueToBeWritten);
         lines.forEach(line -> result.append(line).append("\n"));
         replaceAllContent(result.toString().replaceAll("$\n", ""));
@@ -44,7 +44,7 @@ public interface DocumentInterface {
     }
 
     default String read(Integer lineNumber) {
-        return toList().get(lineNumber);
+        return toLines().get(lineNumber);
     }
 
     default String read() {
@@ -63,7 +63,7 @@ public interface DocumentInterface {
     }
 
 
-    default List<String> toList() {
+    default List<String> toLines() {
         return Arrays.asList(read().split("\n"));
     }
 
