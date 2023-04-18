@@ -9,41 +9,38 @@ import java.util.Scanner;
 
 public interface DocumentInterface {
 
-
-    default DocumentInterface append(String contentToBeWritten) {
+    default void write(String contentToBeWritten, boolean append) {
         try {
-            final FileWriter fileWriter = getFileWriter(true);
+            final FileWriter fileWriter = getFileWriter(append);
             fileWriter.write(contentToBeWritten);
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+
+    default DocumentInterface append(String contentToBeWritten) {
+        write(contentToBeWritten, true);
         return this;
     }
 
+
+    default void replaceAllContent(String content) {
+        write(content, false);
+    }
 
     default void replaceLine(Integer lineNumber, String valueToBeWritten) {
         final StringBuilder result = new StringBuilder();
         final List<String> lines = toList();
         lines.set(lineNumber, valueToBeWritten);
         lines.forEach(line -> result.append(line).append("\n"));
-        replaceAll(result.toString().replaceAll("$\n", ""));
-    }
-
-    default void replaceAll(String content) {
-        try {
-            final FileWriter overWriter = new FileWriter(getFile(), false);
-            overWriter.write(content);
-            overWriter.flush();
-            overWriter.close();
-        } catch (IOException e) {
-            throw new Error(e);
-        }
+        replaceAllContent(result.toString().replaceAll("$\n", ""));
     }
 
     default void replaceAllOccurrences(String stringToReplace, String replacementString) {
-        replaceAll(read().replaceAll(stringToReplace, replacementString));
+        replaceAllContent(read().replaceAll(stringToReplace, replacementString));
     }
 
     default String read(Integer lineNumber) {

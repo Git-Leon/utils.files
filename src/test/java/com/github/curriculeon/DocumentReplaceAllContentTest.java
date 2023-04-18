@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * @author leon on 16/11/2018.
  */
-public class DocumentReplaceAllTest {
+public class DocumentReplaceAllContentTest {
     private String fileName;
 
     @Before
@@ -25,10 +25,10 @@ public class DocumentReplaceAllTest {
         String contentToBeOverwritten = "The quick brown fox";
         String expected = "The quick browner fox";
         Document documentWriter = new Document(fileName);
-        documentWriter.replaceAll(contentToBeOverwritten);
+        documentWriter.replaceAllContent(contentToBeOverwritten);
 
         // when
-        documentWriter.replaceAll(expected);
+        documentWriter.replaceAllContent(expected);
         String actual = documentWriter.read();
 
         // then
@@ -41,10 +41,10 @@ public class DocumentReplaceAllTest {
         String contentToBeOverwritten = "The quick brown fox";
         String expected = "The quick brownest fox";
         Document documentWriter = new Document(fileName);
-        documentWriter.replaceAll(contentToBeOverwritten);
+        documentWriter.replaceAllContent(contentToBeOverwritten);
 
         // when
-        documentWriter.replaceAll(expected);
+        documentWriter.replaceAllContent(expected);
         String actual = documentWriter.read();
 
         // then

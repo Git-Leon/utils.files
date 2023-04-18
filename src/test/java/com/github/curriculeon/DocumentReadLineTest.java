@@ -25,7 +25,7 @@ public class DocumentReadLineTest {
         String expected = "The";
         Document documentWriter = new Document(fileName);
         String contentToBeWritten = "The\nquick\nbrown\nfox";
-        documentWriter.replaceAll(contentToBeWritten);
+        documentWriter.replaceAllContent(contentToBeWritten);
 
         // when
         String actual = documentWriter.read(0);
@@ -41,7 +41,7 @@ public class DocumentReadLineTest {
         String expected = "quick";
         Document documentWriter = new Document(fileName);
         String contentToBeWritten = "The\nquick\nbrown\nfox";
-        documentWriter.replaceAll(contentToBeWritten);
+        documentWriter.replaceAllContent(contentToBeWritten);
 
         // when
         String actual = documentWriter.read(1);

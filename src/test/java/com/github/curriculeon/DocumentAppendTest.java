@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -16,7 +15,7 @@ public class DocumentAppendTest {
     @Before
     public void setup() {
         this.fileName = "target/file.txt";
-        new Document(fileName).replaceAll("");
+        new Document(fileName).replaceAllContent("");
     }
 
 
@@ -59,7 +58,7 @@ public class DocumentAppendTest {
         Document documentWriter = new Document(fileName);
 
         // when
-        documentWriter.replaceAll(expected);
+        documentWriter.replaceAllContent(expected);
         String actual = documentWriter.read();
 
         // then
@@ -73,7 +72,7 @@ public class DocumentAppendTest {
         Document documentWriter = new Document(fileName);
 
         // when
-        documentWriter.replaceAll(expected);
+        documentWriter.replaceAllContent(expected);
         String actual = documentWriter.read();
 
         // then
@@ -87,7 +86,7 @@ public class DocumentAppendTest {
         Document documentWriter = new Document(fileName);
 
         // when
-        documentWriter.replaceAll(expected);
+        documentWriter.replaceAllContent(expected);
         String actual = documentWriter.read();
 
         // then
@@ -101,7 +100,7 @@ public class DocumentAppendTest {
         Document documentWriter = new Document(fileName);
 
         // when
-        documentWriter.replaceAll(expected);
+        documentWriter.replaceAllContent(expected);
         String actual = documentWriter.read();
 
         // then
