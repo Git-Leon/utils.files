@@ -12,7 +12,7 @@ public interface DocumentInterface {
 
     default void append(String contentToBeWritten) {
         try {
-            final FileWriter fileWriter = getFileWriter();
+            final FileWriter fileWriter = getFileWriter(false);
             fileWriter.write(contentToBeWritten);
             fileWriter.flush();
             fileWriter.close();
@@ -26,13 +26,9 @@ public interface DocumentInterface {
         final StringBuilder result = new StringBuilder();
         final List<String> lines = toList();
         lines.set(lineNumber, valueToBeWritten);
-        for (String line : lines) {
-            result.append(line);
-            result.append("\n");
-        }
+        lines.forEach(line -> result.append(line).append("\n"));
         append(result.toString().replaceAll("$\n", ""));
     }
-
 
     default void replaceAll(String content) {
         try {
@@ -69,15 +65,14 @@ public interface DocumentInterface {
     }
 
 
-
     default List<String> toList() {
         return Arrays.asList(read().split("\n"));
     }
 
 
-    default FileWriter getFileWriter() {
+    default FileWriter getFileWriter(boolean append) {
         try {
-            return new FileWriter(getFile());
+            return new FileWriter(getFile(), append);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
