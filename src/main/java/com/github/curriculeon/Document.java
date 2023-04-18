@@ -2,8 +2,6 @@ package com.github.curriculeon;
 
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 /**
  * @author leon on 16/11/2018.
